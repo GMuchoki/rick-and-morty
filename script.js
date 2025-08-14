@@ -22,18 +22,16 @@ const data = {
 };
 
 
-const newElement = document.createElement("img");
-newElement.src = data.characters[0].image;
-document.querySelector("div").appendChild(newElement);
+const charactersContainer = document.getElementById("characters-container");
 
-const newElement2 = document.createElement("p");
-newElement2.innerHTML = "<strong>Name: </strong>" + data.characters[0].name;
-document.querySelector("div").appendChild(newElement2);
-
-const newElement3 = document.createElement("p");
-newElement3.innerHTML = "<strong>Status: </strong>" + data.characters[0].status;
-document.querySelector("div").appendChild(newElement3);
-
-const newElement4 = document.createElement("p");
-newElement4.innerHTML = "<strong>Species: </strong>" + data.characters[0].species;
-document.querySelector("div").appendChild(newElement4);
+data.characters.forEach(function(item){
+  let newElement = document.createElement("div");
+  newElement.setAttribute('class', 'card');
+  charactersContainer.appendChild(newElement);
+  newElement.innerHTML = `
+  <img src=${item.image} alt=${item.name} class="character-image"> 
+  <p class="character-detail"><span class="attribute">Name:</span> ${item.name}</p>
+  <p class="character-detail"><span class="attribute">Status:</span> ${item.status}</p> 
+  <p class="character-detail"><span class="attribute">Species:</span> ${item.species}</p>
+  `;
+});
