@@ -1,7 +1,7 @@
 const charactersContainer = document.getElementById("characters-container");
 
 fetch("https://rickandmortyapi.com/api/character")
-.then(results => results.json())
+.then(response => response.json())
 .then(data => {
   data.results.forEach(function(item){
     let newElement = document.createElement("div");
